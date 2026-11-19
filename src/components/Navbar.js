@@ -178,15 +178,17 @@ export default function Navbar() {
         open={mobileOpen}
         onClose={handleDrawerToggle}
         ModalProps={{ keepMounted: true }}
-        PaperProps={{
-          sx: {
-            width: 290,
-            p: 3,
-            backgroundColor: 'rgba(255, 255, 255, 0.88)',
-            backdropFilter: 'blur(20px) saturate(190%)',
-            WebkitBackdropFilter: 'blur(20px) saturate(190%)',
-            borderLeft: '1px solid rgba(226, 232, 240, 0.75)',
-            boxShadow: '-8px 0 32px rgba(11, 19, 43, 0.08)',
+        slotProps={{
+          paper: {
+            sx: {
+              width: 290,
+              p: 3,
+              backgroundColor: 'rgba(255, 255, 255, 0.88)',
+              backdropFilter: 'blur(20px) saturate(190%)',
+              WebkitBackdropFilter: 'blur(20px) saturate(190%)',
+              borderLeft: '1px solid rgba(226, 232, 240, 0.75)',
+              boxShadow: '-8px 0 32px rgba(11, 19, 43, 0.08)',
+            },
           },
         }}
       >

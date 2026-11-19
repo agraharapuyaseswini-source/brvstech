@@ -42,11 +42,13 @@ export default function ContactModal({ open, onClose }) {
       onClose={handleReset}
       maxWidth="sm"
       fullWidth
-      PaperProps={{
-        sx: {
-          borderRadius: '16px',
-          p: { xs: 2, sm: 3 },
-          boxShadow: '0 25px 50px -12px rgba(11, 19, 43, 0.25)',
+      slotProps={{
+        paper: {
+          sx: {
+            borderRadius: '16px',
+            p: { xs: 2, sm: 3 },
+            boxShadow: '0 25px 50px -12px rgba(11, 19, 43, 0.25)',
+          },
         },
       }}
     >
