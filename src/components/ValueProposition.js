@@ -111,7 +111,7 @@ export default function ValueProposition() {
         </Typography>
 
         {/* 4 Cards: newdark1 for popping card in repetition, newdark3 for resting cards */}
-        <Grid container spacing={{ xs: 2.5, md: 2.5 }} justifyContent="center">
+        <Grid container spacing={{ xs: 2.5, md: 2.5 }} sx={{ justifyContent: 'center' }}>
           {highlights.map((item, index) => {
             const isPopped = index === activeCardIndex;
             const currentTheme = isPopped ? POPPED_THEME : RESTING_THEME;

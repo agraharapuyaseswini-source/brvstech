@@ -28,7 +28,7 @@ export default function OrbitEcosystem({ onOpenContact }) {
       }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
+        <Grid container spacing={{ xs: 6, md: 8 }} sx={{ alignItems: 'center' }}>
           {/* Left Column: Information & CTA */}
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography

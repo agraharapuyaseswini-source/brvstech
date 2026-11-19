@@ -148,7 +148,7 @@ export default function Hero({ onOpenContact }) {
       <FuturisticTechCanvas />
 
       <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-        <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
+        <Grid container spacing={{ xs: 6, md: 8 }} sx={{ alignItems: 'center' }}>
           {/* Left Column: Heading and CTAs */}
           <Grid size={{ xs: 12, md: 6.5 }}>
             {/* Top Enterprise Badge */}

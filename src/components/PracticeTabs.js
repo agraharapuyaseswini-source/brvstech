@@ -162,7 +162,7 @@ export default function PracticeTabs({ onOpenContact }) {
         </Box>
 
         {/* Content Area: Left Tab Options, Right Showcase Card */}
-        <Grid container spacing={{ xs: 4, md: 4.5 }} alignItems="stretch">
+        <Grid container spacing={{ xs: 4, md: 4.5 }} sx={{ alignItems: 'stretch' }}>
           {/* Left Column: Tab Option List (Equal in height to the right card) */}
           <Grid size={{ xs: 12, md: 4.2 }} sx={{ display: 'flex', flexDirection: 'column' }}>
             <Box
@@ -243,7 +243,7 @@ export default function PracticeTabs({ onOpenContact }) {
                   willChange: 'opacity, transform',
                 }}
               >
-                <Grid container spacing={{ xs: 3, sm: 4 }} alignItems="center">
+                <Grid container spacing={{ xs: 3, sm: 4 }} sx={{ alignItems: 'center' }}>
                   {/* Visual Half with Real Artwork */}
                   <Grid size={{ xs: 12, sm: 5 }}>
                     <Box
