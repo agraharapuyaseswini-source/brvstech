@@ -463,28 +463,6 @@ export default function Hero({ onOpenContact }) {
                           objectPosition: 'center',
                         }}
                       />
-
-                      {/* Frosted Sample Case Study Badge */}
-                      <Box
-                        sx={{
-                          position: 'absolute',
-                          top: 14,
-                          left: 14,
-                          zIndex: 3,
-                          backgroundColor: 'rgba(255, 255, 255, 0.92)',
-                          backdropFilter: 'blur(8px)',
-                          color: '#5c4d32',
-                          fontWeight: 600,
-                          fontSize: '0.75rem',
-                          px: 1.5,
-                          py: 0.45,
-                          borderRadius: 9999,
-                          border: '1px solid rgba(255, 255, 255, 0.6)',
-                          boxShadow: '0 2px 6px rgba(0, 0, 0, 0.05)',
-                        }}
-                      >
-                        Sample case study
-                      </Box>
                     </Box>
 
                     {/* Case Study Content */}
