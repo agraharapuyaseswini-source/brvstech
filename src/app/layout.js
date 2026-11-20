@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
           <ThemeProvider theme={theme}>
             <CssBaseline />
             <ContactProvider>
-              <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#ffffff' }}>
+              <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#eef5fe' }}>
                 <Navbar />
                 <Box component="main" sx={{ flexGrow: 1 }}>
                   {children}

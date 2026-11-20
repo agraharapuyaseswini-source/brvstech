@@ -1,9 +1,7 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -28,27 +26,16 @@ const navItems = [
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const { openContactModal } = useContactModal();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 12);
-    };
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
 
   return (
-    <AppBar
-      position="sticky"
-      elevation={0}
+    <Box
+      component="header"
       sx={{
         position: 'sticky',
         top: 0,
@@ -56,30 +43,21 @@ export default function Navbar() {
         right: 0,
         width: '100%',
         zIndex: 1100,
-        backgroundColor: scrolled
-          ? 'rgba(255, 255, 255, 0.75)'
-          : 'transparent',
-        backdropFilter: scrolled ? 'blur(16px)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(16px)' : 'none',
-        borderBottom: scrolled
-          ? '1px solid rgba(226, 232, 240, 0.6)'
-          : 'none',
-        boxShadow: scrolled
-          ? '0 4px 20px rgba(11, 19, 43, 0.04)'
-          : 'none',
-        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-        py: { xs: 0.8, md: 1.2 },
+        backgroundColor: 'transparent',
+        boxShadow: 'none',
+        border: 'none',
+        mb: { xs: '-60px', sm: '-64px', md: '-72px' },
+        pointerEvents: 'none',
       }}
     >
-      <Container maxWidth="lg">
-        <Toolbar
-          disableGutters
+      <Container maxWidth="lg" sx={{ pointerEvents: 'auto' }}>
+        <Box
           sx={{
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            minHeight: { xs: '56px !important', sm: '60px !important', md: '64px !important' },
-            py: 0,
+            minHeight: { xs: 60, sm: 64, md: 72 },
+            py: { xs: 0.5, md: 1 },
           }}
         >
           {/* Brand Logo */}
@@ -87,7 +65,7 @@ export default function Navbar() {
             <BrvsLogo />
           </Link>
 
-          {/* Desktop Center Floating Pill Nav */}
+          {/* Desktop Center Floating Pill Nav: ONLY Card around Work...Careers */}
           <Box
             sx={{
               display: { xs: 'none', md: 'flex' },
@@ -168,7 +146,7 @@ export default function Navbar() {
               <MenuIcon />
             </IconButton>
           </Box>
-        </Toolbar>
+        </Box>
       </Container>
 
       {/* Mobile Drawer */}
@@ -270,6 +248,6 @@ export default function Navbar() {
           Let&apos;s talk
         </Button>
       </Drawer>
-    </AppBar>
+    </Box>
   );
 }

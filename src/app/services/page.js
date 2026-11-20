@@ -98,7 +98,7 @@ export default function ServicesPage() {
       {/* 1. Header Section - NEURAL NODES BACKGROUND */}
       <Box
         sx={{
-          pt: { xs: 2, md: 3 },
+          pt: { xs: 9.5, md: 11.5 },
           pb: { xs: 2.5, md: 3 },
           position: 'relative',
           overflow: 'hidden',
