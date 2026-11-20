@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Container from '@mui/material/Container';
@@ -26,8 +26,18 @@ const navItems = [
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const { openContactModal } = useContactModal();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -60,12 +70,22 @@ export default function Navbar() {
             py: { xs: 0.5, md: 1 },
           }}
         >
-          {/* Brand Logo */}
-          <Link href="/" style={{ textDecoration: 'none' }}>
-            <BrvsLogo />
-          </Link>
+          {/* Brand Logo: hides while scrolling */}
+          <Box
+            sx={{
+              opacity: scrolled ? 0 : 1,
+              visibility: scrolled ? 'hidden' : 'visible',
+              pointerEvents: scrolled ? 'none' : 'auto',
+              transform: scrolled ? 'translateY(-12px)' : 'translateY(0)',
+              transition: 'opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1), transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.28s',
+            }}
+          >
+            <Link href="/" style={{ textDecoration: 'none' }}>
+              <BrvsLogo />
+            </Link>
+          </Box>
 
-          {/* Desktop Center Floating Pill Nav: ONLY Card around Work...Careers */}
+          {/* Desktop Center Floating Pill Nav: ONLY Card around Work...Careers, remains floating while scrolling */}
           <Box
             sx={{
               display: { xs: 'none', md: 'flex' },
@@ -74,8 +94,11 @@ export default function Navbar() {
               border: '1px solid #e2e8f0',
               borderRadius: 9999,
               p: 0.5,
-              boxShadow: '0 2px 10px rgba(15, 23, 42, 0.04)',
+              boxShadow: scrolled
+                ? '0 6px 20px rgba(15, 23, 42, 0.08)'
+                : '0 2px 10px rgba(15, 23, 42, 0.04)',
               gap: 0.5,
+              transition: 'box-shadow 0.3s ease',
             }}
           >
             {navItems.map((item) => {
@@ -107,8 +130,19 @@ export default function Navbar() {
             })}
           </Box>
 
-          {/* Right Action Button: Let's talk */}
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1.5 }}>
+          {/* Right Action Button: Let's talk: hides while scrolling */}
+          <Box
+            sx={{
+              display: { xs: 'none', md: 'flex' },
+              alignItems: 'center',
+              gap: 1.5,
+              opacity: scrolled ? 0 : 1,
+              visibility: scrolled ? 'hidden' : 'visible',
+              pointerEvents: scrolled ? 'none' : 'auto',
+              transform: scrolled ? 'translateY(-12px)' : 'translateY(0)',
+              transition: 'opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1), transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.28s',
+            }}
+          >
             <Button
               variant="contained"
               onClick={openContactModal}
