@@ -57,19 +57,18 @@ export default function Navbar() {
         width: '100%',
         zIndex: 1100,
         backgroundColor: scrolled
-          ? 'rgba(255, 255, 255, 0.52)'
-          : 'rgba(255, 255, 255, 0.35)',
-        backdropFilter: 'blur(20px) saturate(190%)',
-        WebkitBackdropFilter: 'blur(20px) saturate(190%)',
+          ? 'rgba(255, 255, 255, 0.75)'
+          : 'transparent',
+        backdropFilter: scrolled ? 'blur(16px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(16px)' : 'none',
         borderBottom: scrolled
-          ? '1px solid rgba(226, 232, 240, 0.65)'
-          : '1px solid rgba(226, 232, 240, 0.4)',
+          ? '1px solid rgba(226, 232, 240, 0.6)'
+          : 'none',
         boxShadow: scrolled
-          ? '0 8px 24px -8px rgba(11, 19, 43, 0.06), 0 1px 0 rgba(226, 232, 240, 0.45)'
-          : '0 2px 14px rgba(11, 19, 43, 0.02)',
-        transition: 'background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-        pt: 0.25,
-        pb: 0,
+          ? '0 4px 20px rgba(11, 19, 43, 0.04)'
+          : 'none',
+        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+        py: { xs: 0.8, md: 1.2 },
       }}
     >
       <Container maxWidth="lg">
@@ -79,7 +78,7 @@ export default function Navbar() {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            minHeight: { xs: '54px !important', sm: '58px !important', md: '60px !important' },
+            minHeight: { xs: '56px !important', sm: '60px !important', md: '64px !important' },
             py: 0,
           }}
         >
@@ -88,19 +87,16 @@ export default function Navbar() {
             <BrvsLogo />
           </Link>
 
-          {/* Desktop Center Pill Nav with Glassmorphism */}
+          {/* Desktop Center Floating Pill Nav */}
           <Box
             sx={{
               display: { xs: 'none', md: 'flex' },
               alignItems: 'center',
-              backgroundColor: 'rgba(255, 255, 255, 0.45)',
-              backdropFilter: 'blur(12px)',
-              WebkitBackdropFilter: 'blur(12px)',
-              border: '1px solid rgba(255, 255, 255, 0.8)',
+              backgroundColor: '#ffffff',
+              border: '1px solid #e2e8f0',
               borderRadius: 9999,
-              px: 0.8,
-              py: 0.35,
-              boxShadow: '0 2px 10px rgba(15, 23, 42, 0.03), inset 0 1px 1px rgba(255, 255, 255, 0.9)',
+              p: 0.5,
+              boxShadow: '0 2px 10px rgba(15, 23, 42, 0.04)',
               gap: 0.5,
             }}
           >
@@ -109,18 +105,20 @@ export default function Navbar() {
               return (
                 <Link key={item.label} href={item.href} style={{ textDecoration: 'none' }}>
                   <Button
+                    disableRipple
                     sx={{
-                      color: isActive ? '#ffffff' : '#475569',
-                      backgroundColor: isActive ? '#0b132b !important' : 'transparent',
+                      color: '#0b132b',
+                      backgroundColor: isActive ? '#eaf2fe !important' : 'transparent',
                       fontSize: '0.875rem',
                       fontWeight: isActive ? 600 : 500,
-                      px: 2.2,
+                      px: 2.4,
                       py: 0.75,
                       borderRadius: 9999,
+                      textTransform: 'none',
                       transition: 'all 0.2s ease',
                       '&:hover': {
-                        color: isActive ? '#ffffff' : '#0b132b',
-                        backgroundColor: isActive ? '#0b132b' : 'rgba(241, 245, 249, 0.8)',
+                        color: '#0b132b',
+                        backgroundColor: isActive ? '#eaf2fe' : '#f8fafc',
                       },
                     }}
                   >
@@ -131,24 +129,25 @@ export default function Navbar() {
             })}
           </Box>
 
-          {/* Right Action Button */}
+          {/* Right Action Button: Let's talk */}
           <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1.5 }}>
             <Button
               variant="contained"
               onClick={openContactModal}
               sx={{
-                backgroundColor: '#0b132b',
+                backgroundColor: '#2563eb',
                 color: '#ffffff',
                 fontWeight: 600,
                 fontSize: '0.9rem',
                 borderRadius: 9999,
-                px: 3,
+                px: 3.2,
                 py: 1,
-                boxShadow: '0 4px 14px rgba(11, 19, 43, 0.2)',
+                textTransform: 'none',
+                boxShadow: '0 4px 14px rgba(37, 99, 235, 0.3)',
                 transition: 'all 0.25s ease',
                 '&:hover': {
-                  backgroundColor: '#1c2541',
-                  boxShadow: '0 6px 18px rgba(11, 19, 43, 0.3)',
+                  backgroundColor: '#1d4ed8',
+                  boxShadow: '0 6px 18px rgba(37, 99, 235, 0.4)',
                   transform: 'translateY(-1px)',
                 },
               }}
@@ -256,13 +255,15 @@ export default function Navbar() {
             openContactModal();
           }}
           sx={{
-            backgroundColor: '#0b132b',
+            backgroundColor: '#2563eb',
             color: '#ffffff',
             borderRadius: 9999,
             py: 1.2,
-            boxShadow: '0 4px 14px rgba(11, 19, 43, 0.2)',
+            textTransform: 'none',
+            fontWeight: 600,
+            boxShadow: '0 4px 14px rgba(37, 99, 235, 0.25)',
             '&:hover': {
-              backgroundColor: '#1c2541',
+              backgroundColor: '#1d4ed8',
             },
           }}
         >
